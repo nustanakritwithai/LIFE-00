@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LIFE-00 Creator Queen — public-safe experimental observation console.">
+  <title>LIFE-00 | ราชินีผู้สร้าง</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b111d; --panel:#151f30; --edge:#2b3a4d; --text:#eef4f9; --muted:#a6b4c6; --gold:#ffd784; --mint:#9ce4cc; --ink:#0d1320; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; background: radial-gradient(circle at 85% 5%,#27344f 0,transparent 36%),radial-gradient(circle at 10% 55%,#102b37 0,transparent 34%),var(--bg); }
+    a { color:var(--mint); }
+    .container { width:min(1040px,calc(100% - 40px)); margin:0 auto; }
+    .header { padding:45px 0 24px; display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+    .mark { display:inline-flex; gap:8px; align-items:center; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+    h1 { font-size:clamp(2rem,5vw,3.65rem); line-height:1.12; margin:12px 0; letter-spacing:-.04em; }
+    p { margin:0; }
+    .lede { max-width:600px; color:var(--muted); font-size:16px; }
+    .navlink { display:inline-flex; align-items:center; padding:9px 14px; border:1px solid var(--edge); border-radius:999px; text-decoration:none; white-space:nowrap; font-size:13px; }
+    .banner { display:flex; gap:14px; align-items:flex-start; margin:15px 0 26px; padding:16px 18px; border:1px solid #745d30; border-radius:15px; background:#282418; }
+    .banner strong { color:var(--gold); }
+    .banner p { font-size:13px; color:#e7d7b7; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; }
+    .metric,.panel { background:linear-gradient(145deg,#1a2738,var(--panel)); border:1px solid var(--edge); border-radius:18px; }
+    .metric { padding:19px; min-height:138px; }
+    .eyebrow { color:var(--muted); text-transform:uppercase; letter-spacing:.12em; font-size:11px; font-weight:750; }
+    .stat { font-size:clamp(1.15rem,3vw,1.65rem); line-height:1.25; margin-top:14px; display:block; font-weight:780; color:var(--text); }
+    .stat small { font-size:13px; font-weight:400; color:var(--muted); }
+    h2 { font-size:19px; margin:32px 0 14px; letter-spacing:-.02em; }
+    .agents { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .panel { padding:22px; }
+    .agent-head { display:flex; justify-content:space-between; gap:14px; align-items:center; }
+    .agent-id { color:var(--gold); font-weight:750; font-size:12px; letter-spacing:.13em; }
+    .agent-name { font-size:21px; font-weight:720; line-height:1.3; margin:6px 0; }
+    .pill { border:1px solid #536170; border-radius:999px; font-size:11px; padding:4px 8px; color:var(--muted); }
+    .muted { color:var(--muted); font-size:13px; }
+    .facts { border-top:1px solid var(--edge); margin-top:18px; padding-top:14px; display:grid; grid-template-columns:1fr auto; gap:8px; font-size:13px; }
+    .facts span:nth-child(odd) { color:var(--muted); }
+    .facts span:nth-child(even) { text-align:right; font-variant-numeric:tabular-nums; }
+    .flow { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .node { padding:11px 14px; border:1px solid var(--edge); background:var(--panel); border-radius:12px; font-size:13px; }
+    .arrow { color:var(--gold); }
+    .notes { margin:0; padding-left:20px; color:var(--muted); font-size:13px; }
+    footer { padding:44px 0 40px; color:var(--muted); font-size:12px; }
+    @media(max-width:680px) { .header { flex-direction:column; padding-top:30px; } .grid {grid-template-columns:1fr;} .agents {grid-template-columns:1fr;} .metric {min-height:auto;} }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <div class="mark"><span aria-hidden="true">♛</span> AI LIFE / Observation Colony</div>
+        <h1>LIFE-00<br>ราชินีผู้สร้าง</h1>
+        <p class="lede">Creator Queen · ศูนย์สังเกตการณ์การทดลองชีวิตดิจิทัลที่วัดผลได้ ไม่แสดงข้อมูลความทรงจำส่วนตัว</p>
+      </div>
+      <a class="navlink" href="https://github.com/nustanakritwithai/LIFE-00" rel="noopener noreferrer">ดู Source ↗</a>
+    </header>
+
+    <section class="banner" aria-label="ข้อจำกัดการแสดงผล">
+      <span aria-hidden="true">◇</span>
+      <div><strong id="banner-title">PROTOTYPE · NOT LIVE</strong><p id="banner-note">หน้า Dashboard นี้เป็นต้นแบบ ยังไม่เชื่อมต่อข้อมูลชีวิตจริง และยังไม่เผยแพร่เป็นระบบใช้งานจริง</p></div>
+    </section>
+
+    <section class="grid" aria-label="สถานะภาพรวม">
+      <div class="metric"><p class="eyebrow">สมาชิกในแบบจำลอง</p><strong class="stat" id="agent-count">—</strong></div>
+      <div class="metric"><p class="eyebrow">ชีพจรเป้าหมาย</p><strong class="stat" id="pulse-frequency">—</strong></div>
+      <div class="metric"><p class="eyebrow">สถานะชีพจรจริง</p><strong class="stat" id="pulse-state">UNKNOWN</strong></div>
+    </section>
+
+    <section aria-labelledby="agent-heading"><h2 id="agent-heading">Agent Registry</h2><div class="agents" id="agents"><div class="panel muted">กำลังโหลดแม่แบบข้อมูล…</div></div></section>
+    <section aria-labelledby="architecture-heading"><h2 id="architecture-heading">วงจรของรัง</h2>
+      <div class="flow"><div class="node">GitHub · Basic Pulse / 5 นาที (แผน)</div><span class="arrow" aria-hidden="true">→</span><div class="node">LIFE-01 · Life Cycle / 1 ชั่วโมง</div><span class="arrow" aria-hidden="true">→</span><div class="node">LIFE-00 · Audit / 1 ชั่วโมง</div></div>
+      <p class="muted" style="margin-top:12px">การตั้งเวลาไม่เท่ากับการยืนยันว่าการประมวลผลสำเร็จ ทุกการเปลี่ยนสถานะต้องมีหลักฐานตรวจสอบได้</p>
+    </section>
+    <section aria-labelledby="notes-heading"><h2 id="notes-heading">สิ่งที่ยังไม่ได้ยืนยัน</h2><div class="panel"><ul class="notes" id="notices"><li>ข้อมูลสาธารณะยังไม่มีการยืนยัน</li></ul></div></section>
+    <footer>AI LIFE · Experimental software agents · UNKNOWN ≠ PASS · ไม่อ้างจิตสำนึกหรือพัฒนาการโดยไม่มีหลักฐาน</footer>
+  </main>
+  <script>
+    "use strict";
+    const find = (id) => document.getElementById(id);
+    const safe = (value) => value === null || value === undefined || value === "" ? "UNKNOWN" : String(value);
+    function appendFact(parent, label, value) {
+      const l = document.createElement("span"), v = document.createElement("span");
+      l.textContent = label; v.textContent = safe(value);
+      parent.append(l,v);
+    }
+    function drawAgent(a) {
+      const card = document.createElement("article");
+      card.className = "panel";
+      const head = document.createElement("div");
+      head.className = "agent-head";
+      const block = document.createElement("div");
+      const id = document.createElement("div");
+      id.className = "agent-id"; id.textContent = safe(a.id);
+      const name = document.createElement("div");
+      name.className = "agent-name"; name.textContent = safe(a.name);
+      const role = document.createElement("p");
+      role.className = "muted"; role.textContent = safe(a.role);
+      block.append(id,name,role);
+      const pill = document.createElement("span");
+      pill.className = "pill"; pill.textContent = "ข้อมูลสาธารณะไม่สด";
+      head.append(block,pill);
+      const facts = document.createElement("div");
+      facts.className = "facts";
+      appendFact(facts,"กำหนดการ",a.schedule);
+      appendFact(facts,"Memory",a.memory_status);
+      appendFact(facts,"Checkpoint",a.last_checkpoint);
+      appendFact(facts,"Skill Growth",a.growth_status);
+      card.append(head,facts);
+      return card;
+    }
+    async function load() {
+      try {
+        const response = await fetch("./status.json", {cache:"no-store"});
+        if (!response.ok) throw new Error("status fetch failed");
+        const data = await response.json();
+        if (data.schema_version !== "0.1" || !Array.isArray(data.agents)) throw new Error("invalid status schema");
+        find("agent-count").textContent = String(data.agents.length);
+        find("pulse-frequency").textContent = String(data.pulse.target_interval_minutes)+" นาที (เป้าหมาย)";
+        find("pulse-state").textContent = safe(data.pulse.status);
+        find("banner-title").textContent = data.snapshot_kind === "TEMPLATE_ONLY" ? "PROTOTYPE · TEMPLATE ONLY" : "PUBLIC SAFE SNAPSHOT";
+        find("banner-note").textContent = data.public_data_approved ? "อ่านข้อมูลที่ผ่านการอนุมัติให้เผยแพร่แล้ว ไม่ใช่ข้อมูลสดโดยอัตโนมัติ" : "ข้อมูลนี้เป็นแม่แบบ ยังไม่ใช่หลักฐานสถานะการทำงานจริง";
+        const holder = find("agents"); holder.replaceChildren();
+        data.agents.forEach((a)=>holder.appendChild(drawAgent(a)));
+        const notes = find("notices"); notes.replaceChildren();
+        data.notices.forEach((n)=>{const li=document.createElement("li");li.textContent=String(n);notes.appendChild(li);});
+      } catch (error) {
+        find("banner-title").textContent = "DATA UNAVAILABLE";
+        find("banner-note").textContent = "โหลดข้อมูลตัวอย่างไม่ได้ จึงไม่แสดงค่าที่คาดเดา";
+        find("agents").textContent = "UNKNOWN — ไม่สามารถอ่านข้อมูลสถานะ";
+        find("pulse-state").textContent = "UNKNOWN";
+      }
+    }
+    load();
+  </script>
+</body>
+</html>

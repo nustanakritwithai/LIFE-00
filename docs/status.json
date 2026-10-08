@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "snapshot_kind": "TEMPLATE_ONLY",
+  "generated_at": null,
+  "public_data_approved": false,
+  "dashboard_status": "NOT_DEPLOYED",
+  "pulse": {
+    "target_interval_minutes": 5,
+    "status": "NOT_CONFIGURED",
+    "last_heartbeat": null
+  },
+  "agents": [
+    {
+      "id": "LIFE-00",
+      "name": "ราชินีผู้สร้าง",
+      "role": "Creator / Observer",
+      "schedule": "ทุกชั่วโมง · นาที 00",
+      "memory_status": "UNKNOWN",
+      "last_cycle": null,
+      "last_checkpoint": null,
+      "growth_status": "UNKNOWN"
+    },
+    {
+      "id": "LIFE-01",
+      "name": "ชีวิตตัวแรก",
+      "role": "Digital life simulation",
+      "schedule": "ทุกชั่วโมง · นาที 30",
+      "memory_status": "UNKNOWN",
+      "last_cycle": null,
+      "last_checkpoint": null,
+      "growth_status": "UNKNOWN"
+    }
+  ],
+  "notices": [
+    "ข้อมูลนี้เป็นแม่แบบสาธารณะ ไม่ได้เชื่อมข้อมูลสดจากสมุดชีวิต",
+    "ไม่มีข้อมูลส่วนตัวหรือผลทดสอบทักษะที่ยืนยันแล้ว",
+    "ระบบชีพจร GitHub ทุก 5 นาทียังไม่ได้เปิดใช้งาน"
+  ]
+}
