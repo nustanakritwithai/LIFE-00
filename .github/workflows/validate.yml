@@ -1,0 +1,19 @@
+name: Validate public console
+
+on:
+  push:
+    branches:
+      - feat/creator-queen-console-v0-1
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run static safety checks
+        run: python3 -m unittest discover -s tests -v
